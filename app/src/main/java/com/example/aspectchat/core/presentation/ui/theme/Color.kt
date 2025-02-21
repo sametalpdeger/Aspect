@@ -1,0 +1,65 @@
+package com.example.aspectchat.core.presentation.ui.theme
+
+import androidx.compose.ui.graphics.Color
+
+data object Colors {
+    val AspectBlue1100 = Color(0xff3e56f2)
+    val AspectBlue1000 = Color(0xff4358ea)
+    val AspectBlue900 = Color(0xff475cef)
+    val AspectBlue800 = Color(0xff4f63f4)
+    val AspectBlue700 = Color(0xff576af8)
+    val AspectBlue600 = Color(0xff5e71fb)
+    val AspectBlue500 = Color(0xff6577fb)
+    val AspectBlue400 = Color(0xff6c7dfc)
+    val AspectBlue300 = Color(0xff7282f9)
+    val AspectBlue200 = Color(0xff7c8bfe)
+    val AspectBlue100 = Color(0xff8290fb)
+
+
+    val ErrorRed = Color(0xFFF44336)
+
+    val Gray1700 = Color(0xFF151618)
+    val Gray1600 = Color(0xFF18191B)
+    val Gray1500 = Color(0xFF1A1B1D)
+    val Gray1400 = Color(0xFF1A1B1E)
+    val Gray1300 = Color(0xFF1B1C1F)
+    val Gray1200 = Color(0xFF1D1E21)
+    val Gray1100 = Color(0xFF1F2023)
+    val Gray1000 = Color(0xFF212225)
+    val Gray900 = Color(0xFF1B1C1F)  // Your original base
+    val Gray850 = Color(0xFF242528)
+    val Gray800 = Color(0xFF2D2E31)
+    val Gray750 = Color(0xFF363739)
+    val Gray700 = Color(0xFF3F4042)
+    val Gray650 = Color(0xFF484949)
+    val Gray600 = Color(0xFF515254)
+    val Gray550 = Color(0xFF5A5B5D)
+    val Gray500 = Color(0xFF636466)
+    val Gray450 = Color(0xFF6C6D6F)
+    val Gray400 = Color(0xFF7B7C7E)
+    val Gray350 = Color(0xFF8F9092)
+
+    val White = Color(0xFFFFFFFF)    // Pure white (base)
+    val White100 = Color(0xFFFFFFFF)
+    val White200 = Color(0xFFFEFEFE)
+    val White300 = Color(0xFFFDFDFD)
+    val White400 = Color(0xFFFCFCFC)
+    val White500 = Color(0xFFFBFBFB)
+    val White600 = Color(0xFFFAFAFA)
+    val White700 = Color(0xFFF9F9F9)
+    val White800 = Color(0xFFF8F8F8)
+    val White900 = Color(0xFFF7F7F7)
+    val White1000 = Color(0xFFF6F6F6)
+    val White1100 = Color(0xFFF5F5F5)
+    val White1200 = Color(0xFFF4F4F4)
+    val White1300 = Color(0xFFF3F3F3)
+    val White1400 = Color(0xFFF2F2F2)
+    val White1500 = Color(0xFFF1F1F1)
+    val White1600 = Color(0xFFF0F0F0)
+    val White1700 = Color(0xFFEFEFEF)
+    val White1800 = Color(0xFFEEEEEE)
+    val White1900 = Color(0xFFEDEDED)
+    val White2000 = Color(0xFFECECEC)
+
+    val FullAlpha = Color(0x00ececec)
+}
