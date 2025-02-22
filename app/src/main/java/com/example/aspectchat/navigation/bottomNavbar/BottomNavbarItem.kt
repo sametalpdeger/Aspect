@@ -1,6 +1,5 @@
 package com.example.aspectchat.navigation.bottomNavbar
 
-import Home
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.size
@@ -16,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.aspectchat.R
 import com.example.aspectchat.core.presentation.ui.theme.colorsA
+import com.example.aspectchat.navigation.presentation.view.Home
 
 @Composable
 fun RowScope.BottomNavbarItem(
@@ -36,7 +36,6 @@ fun RowScope.BottomNavbarItem(
         modifier = Modifier
             .weight(1f)
     ) {
-
         Image(
             painter = painterResource(icon),
             contentDescription = name,

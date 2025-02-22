@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.sp
 import com.example.aspectchat.R
 import com.example.aspectchat.core.presentation.ui.theme.colorsA
 import com.example.aspectchat.core.presentation.ui.theme.isDarkTheme
-import com.example.aspectchat.navigation.navigationDrawer.domain.model.IsDrawerOpenState
+import com.example.aspectchat.navigation.domain.model.IsDrawerOpenState
 
 @Composable
 fun HomeScreen(

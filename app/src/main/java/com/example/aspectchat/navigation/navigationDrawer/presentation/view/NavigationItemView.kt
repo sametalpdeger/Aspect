@@ -23,7 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aspectchat.core.presentation.ui.theme.colorsA
-import com.example.aspectchat.navigation.navigationDrawer.domain.model.UserData
+import com.example.aspectchat.navigation.domain.model.UserData
 
 @Composable
 fun NavigationItemView(
@@ -37,7 +37,7 @@ fun NavigationItemView(
             .clip(RoundedCornerShape(size = 99.dp))
             .clickable { onClick() }
             .background(
-                color =if (selected) Color(0x16ffffff) else MaterialTheme.colorsA.FullAlpha,
+                color = if (selected) Color(0x16ffffff) else MaterialTheme.colorsA.FullAlpha,
                 shape = RoundedCornerShape(99.dp)
             )
             .padding(horizontal = 6.dp, vertical = 6.dp)

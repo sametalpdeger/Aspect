@@ -12,7 +12,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.aspectchat.R
-import com.example.aspectchat.navigation.navigationDrawer.domain.model.UserData
+import com.example.aspectchat.navigation.domain.model.UserData
 
 @Composable
 fun ColumnScope.NavigationItemsView() {
