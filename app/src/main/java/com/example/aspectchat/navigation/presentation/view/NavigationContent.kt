@@ -76,6 +76,12 @@ fun NavigationContent() {
         offsetX = maxOffsetX.value
     }
 
+    fun closeDrawer() {
+        isDrawerContentUnder = true
+        drawerState = IsDrawerOpenState.Closed
+        offsetX = 0f
+    }
+
     // Update offset when drawer state changes
     LaunchedEffect(drawerState) {
         if (!isDragging) {
@@ -119,47 +125,48 @@ fun NavigationContent() {
         MainContent(
             navController = navController,
             onClick = {
-                if (drawerState.isOpened()) {
-                    isDrawerContentUnder = true
-                    drawerState = IsDrawerOpenState.Closed
-                    offsetX = 0f
-                }
+                println("ON DRAG: ON CLICK")
+                if (drawerState.isOpened()) closeDrawer()
             },
-            onDragStart = { offset ->
+            onDragStart = {
                 isDragging = true
-                dragStartX = offset.x
+                dragStartX = offsetX
                 isDrawerContentUnder = true
-                println("DRAG INFO START: offsetX: $offset.x, dragStartX: $dragStartX")
+                println("ON DRAG START: offsetX: $offsetX, dragStartX: $dragStartX")
             },
             onDragEnd = {
                 isDragging = false
 
                 if (drawerState.isOpened()) {
+                    println("ON DRAG: drawer open")
+                    println("ON DRAG: dragStartX Calculation: ${dragStartX - 200}")
                     val isEnoughToSwipe = (dragStartX - 100) > offsetX
-                    println("DRAG INFO END: offsetX: $offsetX, dragStartX: $dragStartX")
+                    println("ON DRAG END: offsetX: $offsetX, dragStartX: $dragStartX")
 
                     if (isEnoughToSwipe) { // Left swipe while opened -> close
-                        isDrawerContentUnder = true
-                        drawerState = IsDrawerOpenState.Closed
-                        offsetX = 0f
+                        println("ON DRAG END: isEnoughToSwipe offsetX: $offsetX, dragStartX: $dragStartX")
+                        closeDrawer()
                     } else { // Right swipe while opened -> stay opened
-                        offsetX = maxOffsetX.value
+                        println("ON DRAG END: !!!isNotEnoughToSwipe offsetX: $offsetX, dragStartX: $dragStartX")
+                        openDrawer()
                     }
                 } else {
-                    val isEnoughToSwipe = (dragStartX + 100) > offsetX
-                    println("DRAG INFO END: offsetX: $offsetX, dragStartX: $dragStartX")
+                    println("ON DRAG: drawer closed")
+
+                    val isEnoughToSwipe = (dragStartX + 100) < offsetX
+                    println("ON DRAG END: offsetX: $offsetX, dragStartX: $dragStartX")
 
                     if (isEnoughToSwipe) { // Right swipe while closed -> open
-                        offsetX = maxOffsetX.value
+                        openDrawer()
                     } else { // Left swipe while closed -> stay closed
-                        isDrawerContentUnder = true
-                        drawerState = IsDrawerOpenState.Closed
-                        offsetX = 0f
+                        println("ON DRAG END: !!!isNotEnoughToSwipe offsetX: $offsetX, dragStartX: $dragStartX")
+                        closeDrawer()
                     }
                 }
             },
 
             onDragCancel = {
+                println("ON DRAG CANCEL: offsetX: $offsetX, dragStartX: $dragStartX")
                 isDragging = false
                 offsetX = if (drawerState.isOpened()) maxOffsetX.value else 0f
             },
@@ -173,6 +180,8 @@ fun NavigationContent() {
                 if (newOffset >= 0 && newOffset <= maxOffsetX.value) {
                     offsetX = newOffset
                 }
+
+                println("ON DRAG: offsetX: $offsetX, dragStartX: $dragStartX")
             },
             isDrawerContentUnder = isDrawerContentUnder,
             animatedOffsetX = animatedOffsetX,

@@ -34,39 +34,40 @@ fun MainContent(
     onDrag: (change: PointerInputChange, dragAmount: Float) -> Unit,
     openDrawer: () -> Unit,
 ) {
+
+
     Box(
         modifier = Modifier
+            .clickable { onClick() }
             .zIndex(if (isDrawerContentUnder) 3f else 1f)
             .fillMaxSize()
+            .pointerInput(Unit) {
+                detectHorizontalDragGestures(
+                    onDragStart = { offset -> onDragStart(offset) },
+                    onDragEnd = { onDragEnd() },
+                    onDragCancel = { onDragCancel() },
+                    onHorizontalDrag = { change, dragAmount -> onDrag(change, dragAmount) },
+                )
+            }
+            .graphicsLayer {
+                // Apply transformations based on animated values
+                translationX = animatedOffsetX
+                translationY = -(maxOffsetYPx * animatedDragProgress)
+                scaleX = 1f - (0.1f * animatedDragProgress)
+                scaleY = 1f - (0.1f * animatedDragProgress)
+                shape = RoundedCornerShape(20.dp * animatedDragProgress)
+                clip = true
+            }
+            .coloredShadow(
+                color = Color.Black,
+                alpha = 0.5f,
+                shadowRadius = 50.dp,
+                offsetX = 10.dp,
+                offsetY = 10.dp
+            )
     ) {
         NavHosting(
             navController = navController,
-            modifier = Modifier
-                .clickable { onClick() }
-                .pointerInput(Unit) {
-                    detectHorizontalDragGestures(
-                        onDragStart = { offset -> onDragStart(offset) },
-                        onDragEnd = { onDragEnd() },
-                        onDragCancel = { onDragCancel() },
-                        onHorizontalDrag = { change, dragAmount -> onDrag(change, dragAmount) },
-                    )
-                }
-                .graphicsLayer {
-                    // Apply transformations based on animated values
-                    translationX = animatedOffsetX
-                    translationY = -(maxOffsetYPx * animatedDragProgress)
-                    scaleX = 1f - (0.1f * animatedDragProgress)
-                    scaleY = 1f - (0.1f * animatedDragProgress)
-                    shape = RoundedCornerShape(20.dp * animatedDragProgress)
-                    clip = true
-                }
-                .coloredShadow(
-                    color = Color.Black,
-                    alpha = 0.5f,
-                    shadowRadius = 50.dp,
-                    offsetX = 10.dp,
-                    offsetY = 10.dp
-                ),
             drawerState = drawerState,
             onDrawerOpen = { openDrawer() },
         )

@@ -16,11 +16,10 @@ import com.example.aspectchat.navigation.domain.model.IsDrawerOpenState
 
 @Composable
 fun SettingsScreen(
-    modifier: Modifier = Modifier,
     drawerState: IsDrawerOpenState,
 ) {
     Column(
-        modifier = modifier
+        modifier = Modifier
             .background(if (isDarkTheme) MaterialTheme.colorsA.Gray900 else MaterialTheme.colorsA.White2000),
     ) {
         Box(

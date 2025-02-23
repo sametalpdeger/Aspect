@@ -37,7 +37,6 @@ import com.example.aspectchat.navigation.domain.model.IsDrawerOpenState
 
 @Composable
 fun HomeScreen(
-    modifier: Modifier = Modifier,
     drawerState: IsDrawerOpenState,
     onDrawerOpen: () -> Unit,
 ) {
@@ -46,101 +45,124 @@ fun HomeScreen(
         contentAlignment = Alignment.Center
     ) {
         Column(
-            modifier = modifier
+            modifier = Modifier
                 .fillMaxSize()
                 .background(if (isDarkTheme) MaterialTheme.colorsA.Gray900 else MaterialTheme.colorsA.White2000),
         ) {
 
             val paddingValues = WindowInsets.systemBars.asPaddingValues()
 
+
             Column(
                 modifier = Modifier
                     .background(Color(0xff272a31))
             ) {
                 Spacer(modifier = Modifier.height(paddingValues.calculateTopPadding()))
-                Row(
-                    modifier = Modifier
-
-                        .fillMaxWidth()
-                        .padding(vertical = 10.dp, horizontal = 20.dp),
-
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-
-                    Image(
-                        painter = painterResource(R.drawable.menu),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(25.dp)
-                            .clickable { onDrawerOpen() }
-                    )
-
-                    Spacer(modifier = Modifier.width(15.dp))
-
-                    Row(
-                        modifier = Modifier.weight(1f),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Image(
-                            painter = painterResource(R.drawable.image3),
-                            contentDescription = null,
-                            modifier = Modifier
-                                .size(40.dp)
-                                .clip(CircleShape)
-                        )
-
-                        Spacer(modifier = Modifier.width(10.dp))
-
-                        Text(
-                            text = "404nnotfoundd",
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Medium,
-                            color = MaterialTheme.colorsA.White2000,
-                            maxLines = 1
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.width(10.dp))
-
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(15.dp)
-                    ) {
-                        Image(
-                            painter = painterResource(R.drawable.video),
-                            contentDescription = null,
-                            modifier = Modifier
-                                .size(28.dp)
-                                .alpha(0.5f)
-                        )
-
-
-                        Image(
-                            painter = painterResource(R.drawable.call),
-                            contentDescription = null,
-                            modifier = Modifier
-                                .size(26.dp)
-                                .alpha(0.5f)
-                        )
-
-
-                        Image(
-                            painter = painterResource(R.drawable.options),
-                            contentDescription = null,
-                            modifier = Modifier
-                                .size(23.dp)
-                        )
-                    }
-                }
+                TopNav(
+                    onDrawerOpen = onDrawerOpen
+                )
             }
 
-            Box(
-                modifier = Modifier.fillMaxSize(),
-            ) {
 
-            }
+            InputContent()
+        }
+    }
+}
+
+
+@Composable
+fun TopNav(
+    onDrawerOpen: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+
+            .fillMaxWidth()
+            .padding(vertical = 10.dp, horizontal = 10.dp),
+
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+
+        Image(
+            painter = painterResource(R.drawable.menu),
+            contentDescription = null,
+            modifier = Modifier
+                .size(20.dp)
+                .clickable { onDrawerOpen() }
+        )
+
+        Spacer(modifier = Modifier.width(10.dp))
+
+        Row(
+            modifier = Modifier.weight(1f),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Image(
+                painter = painterResource(R.drawable.image3),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(32.dp)
+                    .clip(CircleShape)
+            )
+
+            Spacer(modifier = Modifier.width(10.dp))
+
+            Text(
+                text = "404nnotfounddddddddddddddddddd404nnotfounddddddddddddddddddd404nnotfounddddddddddddddddddd404nnotfounddddddddddddddddddd404nnotfounddddddddddddddddddd404nnotfounddddddddddddddddddd404nnotfoundddddddddddddddddddd",
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Medium,
+                color = MaterialTheme.colorsA.White2000,
+                maxLines = 1
+            )
         }
 
+        Spacer(modifier = Modifier.width(20.dp))
+
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterHorizontally),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(13.dp, Alignment.CenterHorizontally),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.video),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(25.dp)
+                        .alpha(0.5f)
+                )
+
+
+                Image(
+                    painter = painterResource(R.drawable.call),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(25.dp)
+                        .alpha(0.5f)
+                )
+
+            }
+
+
+
+            Image(
+                painter = painterResource(R.drawable.options),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(20.dp)
+                    .alpha(0.8f)
+            )
+        }
+    }
+}
+
+@Composable
+fun InputContent() {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+    ) {
 
     }
-
 }

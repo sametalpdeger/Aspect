@@ -1,7 +1,7 @@
 package com.example.aspectchat.navigation.presentation.view
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -14,33 +14,37 @@ import kotlinx.serialization.Serializable
 @Composable
 fun NavHosting(
     navController: NavHostController,
-    modifier: Modifier = Modifier,
     drawerState: IsDrawerOpenState,
     onDrawerOpen: () -> Unit,
 ) {
+    val drawerStateR = remember(drawerState) {
+        drawerState
+    }
+
+    val navControllerR = remember(navController) {
+        navController
+    }
+
     NavHost(
-        navController = navController,
+        navController = navControllerR,
         startDestination = Home
     ) {
         composable<Home> {
             HomeScreen(
-                modifier = modifier,
-                drawerState = drawerState,
+                drawerState = drawerStateR,
                 onDrawerOpen = onDrawerOpen,
             )
         }
 
         composable<Settings> {
             SettingsScreen(
-                modifier = modifier,
-                drawerState = drawerState,
+                drawerState = drawerStateR,
             )
         }
 
         composable<Friends> {
             FriendsScreen(
-                modifier = modifier,
-                drawerState = drawerState,
+                drawerState = drawerStateR,
             )
         }
     }
