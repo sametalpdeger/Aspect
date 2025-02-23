@@ -33,7 +33,7 @@ fun TopNav(
         modifier = Modifier
 
             .fillMaxWidth()
-            .padding(vertical = 20.dp),
+            .padding(vertical = 17.dp),
 
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -44,7 +44,7 @@ fun TopNav(
             painter = painterResource(R.drawable.menu),
             contentDescription = null,
             modifier = Modifier
-                .size(23.dp)
+                .size(25.dp)
                 .clickable { onDrawerOpen() }
         )
 
@@ -58,7 +58,7 @@ fun TopNav(
                 painter = painterResource(R.drawable.image3),
                 contentDescription = null,
                 modifier = Modifier
-                    .size(35.dp)
+                    .size(37.dp)
                     .clip(CircleShape)
             )
 
@@ -66,9 +66,9 @@ fun TopNav(
 
             Text(
                 text = "404nnotfounddddddddddddddddddd404nnotfounddddddddddddddddddd404nnotfounddddddddddddddddddd404nnotfounddddddddddddddddddd404nnotfounddddddddddddddddddd404nnotfounddddddddddddddddddd404nnotfoundddddddddddddddddddd".substring(
-                    0..12
+                    0..11
                 ),
-                fontSize = 15.sp,
+                fontSize = 17.sp,
                 fontWeight = FontWeight.Medium,
                 color = MaterialTheme.colorsA.White2000,
                 maxLines = 1

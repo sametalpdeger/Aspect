@@ -16,8 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.example.aspectchat.core.presentation.ui.theme.colorsA
 import com.example.aspectchat.core.presentation.ui.theme.isDarkTheme
-import com.example.aspectchat.navigation.domain.model.IsDrawerOpenState
 import com.example.aspectchat.screens.home.presentation.view.InputContent
+import com.example.aspectchat.screens.home.presentation.view.Messages
 import com.example.aspectchat.screens.home.presentation.view.TopNav
 
 @Composable
@@ -46,6 +46,7 @@ fun HomeScreen(
                 )
             }
 
+            Messages(Modifier.weight(1f))
             InputContent()
         }
     }
