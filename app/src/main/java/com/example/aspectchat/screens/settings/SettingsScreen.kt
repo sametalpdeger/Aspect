@@ -12,11 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import com.example.aspectchat.core.presentation.ui.theme.colorsA
 import com.example.aspectchat.core.presentation.ui.theme.isDarkTheme
-import com.example.aspectchat.navigation.domain.model.IsDrawerOpenState
 
 @Composable
 fun SettingsScreen(
-    drawerState: IsDrawerOpenState,
+    onDrawerOpen: () -> Unit,
 ) {
     Column(
         modifier = Modifier

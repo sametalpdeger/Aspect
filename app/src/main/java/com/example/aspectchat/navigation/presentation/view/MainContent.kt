@@ -68,7 +68,6 @@ fun MainContent(
     ) {
         NavHosting(
             navController = navController,
-            drawerState = drawerState,
             onDrawerOpen = { openDrawer() },
         )
     }

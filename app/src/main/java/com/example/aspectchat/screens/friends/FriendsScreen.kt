@@ -12,13 +12,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import com.example.aspectchat.core.presentation.ui.theme.colorsA
 import com.example.aspectchat.core.presentation.ui.theme.isDarkTheme
-import com.example.aspectchat.navigation.domain.model.IsDrawerOpenState
 
 @Composable
 fun FriendsScreen(
-    drawerState: IsDrawerOpenState,
+    onDrawerOpen: () -> Unit,
 ) {
-
     Column(
         modifier = Modifier
             .background(if (isDarkTheme) MaterialTheme.colorsA.Gray900 else MaterialTheme.colorsA.White2000),

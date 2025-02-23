@@ -5,7 +5,6 @@ import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.aspectchat.navigation.domain.model.IsDrawerOpenState
 import com.example.aspectchat.screens.friends.FriendsScreen
 import com.example.aspectchat.screens.home.HomeScreen
 import com.example.aspectchat.screens.home.SettingsScreen
@@ -14,13 +13,8 @@ import kotlinx.serialization.Serializable
 @Composable
 fun NavHosting(
     navController: NavHostController,
-    drawerState: IsDrawerOpenState,
     onDrawerOpen: () -> Unit,
 ) {
-    val drawerStateR = remember(drawerState) {
-        drawerState
-    }
-
     val navControllerR = remember(navController) {
         navController
     }
@@ -31,20 +25,19 @@ fun NavHosting(
     ) {
         composable<Home> {
             HomeScreen(
-                drawerState = drawerStateR,
                 onDrawerOpen = onDrawerOpen,
             )
         }
 
         composable<Settings> {
             SettingsScreen(
-                drawerState = drawerStateR,
+                onDrawerOpen = onDrawerOpen,
             )
         }
 
         composable<Friends> {
             FriendsScreen(
-                drawerState = drawerStateR,
+                onDrawerOpen = onDrawerOpen,
             )
         }
     }
