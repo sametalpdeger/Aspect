@@ -38,6 +38,13 @@ data object Colors {
     val Gray450 = Color(0xFF6C6D6F)
     val Gray400 = Color(0xFF7B7C7E)
     val Gray350 = Color(0xFF8F9092)
+    val Gray300 = Color(0xFFA1A2A3)
+    val Gray250 = Color(0xFFB4B5B6)
+    val Gray200 = Color(0xFFC7C8C9)
+    val Gray150 = Color(0xFFD9DADB)
+    val Gray100 = Color(0xFFEEEEEF)
+    val Gray50 = Color( 0xFFF8F8F8)
+    val Gray0 = Color(0xFF000000)
 
     val White = Color(0xFFFFFFFF)    // Pure white (base)
     val White100 = Color(0xFFFFFFFF)
