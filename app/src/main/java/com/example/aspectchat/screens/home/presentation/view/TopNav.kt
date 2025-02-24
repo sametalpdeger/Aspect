@@ -1,12 +1,9 @@
 package com.example.aspectchat.screens.home.presentation.view
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
@@ -22,6 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aspectchat.R
+import com.example.aspectchat.core.presentation.composes.TopNavTemplate
 import com.example.aspectchat.core.presentation.ui.theme.colorsA
 
 
@@ -29,27 +27,7 @@ import com.example.aspectchat.core.presentation.ui.theme.colorsA
 fun TopNav(
     onDrawerOpen: () -> Unit,
 ) {
-    Row(
-        modifier = Modifier
-
-            .fillMaxWidth()
-            .padding(vertical = 17.dp),
-
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-
-        Spacer(modifier = Modifier.width(12.dp))
-
-        Image(
-            painter = painterResource(R.drawable.menu),
-            contentDescription = null,
-            modifier = Modifier
-                .size(25.dp)
-                .clickable { onDrawerOpen() }
-        )
-
-        Spacer(modifier = Modifier.width(12.dp))
-
+    TopNavTemplate(onDrawerOpen) {
         Row(
             modifier = Modifier.weight(1f),
             verticalAlignment = Alignment.CenterVertically,
@@ -90,7 +68,6 @@ fun TopNav(
                     .alpha(0.5f)
             )
 
-
             Image(
                 painter = painterResource(R.drawable.call),
                 contentDescription = null,
@@ -98,9 +75,6 @@ fun TopNav(
                     .size(26.dp)
                     .alpha(0.5f)
             )
-
-
-
 
             Image(
                 painter = painterResource(R.drawable.options),
@@ -110,7 +84,5 @@ fun TopNav(
                     .alpha(0.8f)
             )
         }
-
-        Spacer(modifier = Modifier.width(20.dp))
     }
 }
