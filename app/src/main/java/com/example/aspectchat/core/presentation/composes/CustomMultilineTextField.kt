@@ -31,7 +31,7 @@ fun MultilineTextField(
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
     expandBasedOnLineCount: Boolean = false,
     /** The height of the text field */
-    height: Dp = 50.dp,
+    height: Dp,
     /** The height will be expanded based on the line count of the text.
      * To use it "expandBasedOnLineCount" must be true.*/
     heightByLineCount: Dp = 56.dp,
@@ -56,6 +56,10 @@ fun MultilineTextField(
      * }
      */
     modifiersBasedOnLineCount: (Int) -> Modifier = { Modifier },
+    /**
+     * The brush used to draw the cursor.
+     */
+    cursorBrush: SolidColor = SolidColor(Colors.AspectBlue1100),
 ) {
     var heightMultiplier by remember { mutableStateOf(0.dp) }
     var currentLineCount by remember { mutableIntStateOf(1) }
@@ -83,7 +87,7 @@ fun MultilineTextField(
         onValueChange = { value -> handleOnValueChange(value) },
         textStyle = textStyle,
         maxLines = maxLines,
-        cursorBrush = SolidColor(Colors.AspectBlue1100),
+        cursorBrush = cursorBrush,
         decorationBox = { innerTextField ->
             Box(modifier = Modifier) {
                 if (value.isEmpty()) {
