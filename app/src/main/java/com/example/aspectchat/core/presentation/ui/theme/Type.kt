@@ -21,6 +21,7 @@ val outfitFontFamily = FontFamily(
     Font(R.font.outfit_semibold, FontWeight.SemiBold),
 )
 
+
 // Set of Material typography styles to start with
 val Typography = Typography(
     displayLarge = TextStyle(

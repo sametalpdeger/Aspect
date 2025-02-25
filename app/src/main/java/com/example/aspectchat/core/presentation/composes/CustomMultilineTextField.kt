@@ -60,6 +60,10 @@ fun MultilineTextField(
      * The brush used to draw the cursor.
      */
     cursorBrush: SolidColor = SolidColor(Colors.AspectBlue1100),
+    /**
+     * Modifier to be applied to the decoration box.
+     */
+    decorationBoxModifier: Modifier = Modifier,
 ) {
     var heightMultiplier by remember { mutableStateOf(0.dp) }
     var currentLineCount by remember { mutableIntStateOf(1) }
@@ -89,7 +93,7 @@ fun MultilineTextField(
         maxLines = maxLines,
         cursorBrush = cursorBrush,
         decorationBox = { innerTextField ->
-            Box(modifier = Modifier) {
+            Box(modifier = decorationBoxModifier) {
                 if (value.isEmpty()) {
                     Text(
                         text = placeholder,

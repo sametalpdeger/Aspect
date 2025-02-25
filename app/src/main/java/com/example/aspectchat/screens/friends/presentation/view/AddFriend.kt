@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import com.example.aspectchat.core.presentation.composes.MultilineTextField
 import com.example.aspectchat.core.presentation.ui.theme.Colors
 import com.example.aspectchat.core.presentation.ui.theme.colorsA
+import com.example.aspectchat.core.presentation.ui.theme.outfitFontFamily
 
 @Composable
 fun ColumnScope.AddFriend() {
@@ -47,6 +48,7 @@ fun ColumnScope.AddFriend() {
                     color = Colors.Gray350,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Normal,
+                    fontFamily = outfitFontFamily
                 )
             }
         }
@@ -85,6 +87,7 @@ fun ColumnScope.AddFriend() {
                     text = "Send request",
                     color = MaterialTheme.colorsA.White2000,
                     fontSize = 16.sp,
+                    fontFamily = outfitFontFamily,
                     fontWeight = FontWeight.SemiBold,
                 )
             }

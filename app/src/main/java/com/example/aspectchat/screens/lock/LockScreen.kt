@@ -2,6 +2,7 @@ package com.example.aspectchat.screens.lock
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -12,8 +13,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -23,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -31,89 +36,109 @@ import androidx.compose.ui.unit.sp
 import com.example.aspectchat.R
 import com.example.aspectchat.core.presentation.composes.MultilineTextField
 import com.example.aspectchat.core.presentation.ui.theme.Colors
+import com.example.aspectchat.core.presentation.ui.theme.outfitFontFamily
 
 @Composable
 fun LockScreen() {
     val paddingValues = WindowInsets.systemBars.asPaddingValues()
+val scrollState = rememberScrollState()
 
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Colors.AspectBlue1100)
-            .padding(20.dp),
+    Box (
+modifier = Modifier
+    .fillMaxSize()
+    .background(Colors.AspectBlue1100)
     ) {
-        Spacer(modifier = Modifier.height(paddingValues.calculateTopPadding()))
-
-        Image(
-            modifier = Modifier
-                .size(130.dp),
-            painter = painterResource(id = R.drawable.white_icon),
-            contentDescription = "lock"
-        )
-        Spacer(modifier = Modifier.height(20.dp))
-        Text(
-            text = "Decryption key",
-            color = Colors.White2000,
-            fontSize = 35.sp,
-            fontWeight = FontWeight.SemiBold,
-        )
-
-
-        Text(
-            text = "Please enter your decryption key. Without it we cannot show your encrypted data.",
-            color = Colors.Gray100,
-            fontSize = 15.sp,
-            fontWeight = FontWeight.Medium,
-            modifier = Modifier
-                .widthIn(max = 350.dp, min = 0.dp)
-                .padding(top = 20.dp),
-            textAlign = TextAlign.Center,
-        )
-        Spacer(modifier = Modifier.height(60.dp))
-
         Column(
-            horizontalAlignment = Alignment.End
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .verticalScroll(scrollState)
+
+                .padding(20.dp),
         ) {
-            MultilineTextField(
-                value = "",
-                onValueChange = {},
-                placeholder = "Enter your encryption key",
-                textStyle = TextStyle(
-                    color = Colors.AspectBlue1100,
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.W800,
-                ),
-                expandBasedOnLineCount = false,
+            Spacer(modifier = Modifier.height(paddingValues.calculateTopPadding()))
+
+            Image(
                 modifier = Modifier
-                    .clip(RoundedCornerShape(size = 20.dp))
-                    .background(Colors.White)
-                    .padding(10.dp)
-                    .fillMaxWidth(),
-                height = 60.dp,
+                    .size(130.dp),
+                painter = painterResource(id = R.drawable.white_icon),
+                contentDescription = "lock"
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            Text(
+                text = "Decryption key",
+                color = Colors.White2000,
+                fontSize = 35.sp,
+                fontWeight = FontWeight.SemiBold,
+                fontFamily = outfitFontFamily
             )
 
-            Button(
+
+            Text(
+                text = "Please enter your decryption key. Without it we cannot show your encrypted data.",
+                color = Colors.Gray100,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Medium,
                 modifier = Modifier
-                    .padding(top = 10.dp),
-                onClick = { /*TODO*/ },
-                shape = RoundedCornerShape(15.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Colors.AspectBlue200,
-                    disabledContainerColor = Colors.AspectBlue100,
-                ),
+                    .widthIn(max = 350.dp, min = 0.dp)
+                    .padding(top = 20.dp),
+                textAlign = TextAlign.Center,
+                fontFamily = outfitFontFamily
+            )
+            Spacer(modifier = Modifier.height(60.dp))
+
+            Column(
+                horizontalAlignment = Alignment.End
             ) {
-                Text(
-                    text = "Continue",
-                    color = Colors.White,
-                    fontSize = 17.sp,
-                    fontWeight = FontWeight.SemiBold,
+                MultilineTextField(
+                    value = "",
+                    onValueChange = {},
+                    placeholder = "Your encryption key here",
+                    textStyle = TextStyle(
+                        color = Colors.Gray0,
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.Medium,
+                        fontFamily = outfitFontFamily
+                    ),
+                    expandBasedOnLineCount = false,
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(size = 20.dp))
+                        .background(Colors.White)
+                        .padding(horizontal = 15.dp, vertical = 10.dp)
+                        .fillMaxWidth(),
+                    height = 60.dp,
                 )
+
+                Button(
+                    modifier = Modifier
+                        .padding(top = 10.dp),
+                    onClick = { /*TODO*/ },
+                    shape = RoundedCornerShape(15.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Colors.AspectBlue200,
+                        disabledContainerColor = Colors.AspectBlue100,
+                    ),
+                ) {
+                    Text(
+                        text = "Continue",
+                        color = Colors.White,
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        fontFamily = outfitFontFamily
+                    )
+                    Spacer(modifier = Modifier.width(10.dp))
+                    Image(
+                        painter = painterResource(id = R.drawable.arrow_right_in),
+                        contentDescription = "icon",
+                        modifier = Modifier.size(25.dp)
+                    )
+                }
             }
+
+
         }
-
-
     }
+
+
 }
 
 

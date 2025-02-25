@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.aspectchat.screens.friends.FriendsScreen
 import com.example.aspectchat.screens.home.HomeScreen
-import com.example.aspectchat.screens.home.SettingsScreen
+import com.example.aspectchat.screens.settings.SettingsScreen
 import kotlinx.serialization.Serializable
 
 @Composable

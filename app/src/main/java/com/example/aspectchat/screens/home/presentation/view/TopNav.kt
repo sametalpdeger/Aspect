@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import com.example.aspectchat.R
 import com.example.aspectchat.core.presentation.composes.TopNavTemplate
 import com.example.aspectchat.core.presentation.ui.theme.colorsA
+import com.example.aspectchat.core.presentation.ui.theme.outfitFontFamily
 
 
 @Composable
@@ -48,6 +49,7 @@ fun TopNav(
                 ),
                 fontSize = 17.sp,
                 fontWeight = FontWeight.Medium,
+                fontFamily = outfitFontFamily,
                 color = MaterialTheme.colorsA.White2000,
                 maxLines = 1
             )

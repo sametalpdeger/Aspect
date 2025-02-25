@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.aspectchat.core.presentation.ui.theme.colorsA
+import com.example.aspectchat.core.presentation.ui.theme.outfitFontFamily
 import com.example.aspectchat.screens.home.data.model.Message
 import com.example.aspectchat.screens.home.presentation.viewModels.MessagesViewModel
 
@@ -89,6 +90,7 @@ fun MessageItem(
                 Text(
                     text = message.message,
                     color = MaterialTheme.colorsA.White900,
+                    fontFamily = outfitFontFamily,
                     fontSize = 15.sp,
                 )
             }
