@@ -74,7 +74,7 @@ modifier = Modifier
 
 
             Text(
-                text = "Please enter your decryption key. Without it we cannot show your encrypted data.",
+                text = """"Aspect stores your data encrypted using "AES/GCM/NoPadding" algorithm. Without your key we cannot show your encrypted data.""",
                 color = Colors.Gray100,
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Medium,
