@@ -31,11 +31,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aspectchat.R
+import com.example.aspectchat.core.presentation.composes.MultilineTextField
 import com.example.aspectchat.core.presentation.composes.SinglelineTextField
 import com.example.aspectchat.core.presentation.ui.theme.Colors
 import com.example.aspectchat.core.presentation.ui.theme.outfitFontFamily
@@ -85,7 +87,7 @@ fun SignUpScreen(
 
             Text(
                 text = """
-                    
+                 
                 """.trimIndent(),
                 color = Color(0xcaffffff),
                 fontSize = 12.sp,
@@ -117,30 +119,26 @@ fun FormSection(setSuccessful: () -> Unit) {
 
     Spacer(modifier = Modifier.height(10.dp))
 
-    SinglelineTextField(
-        placeholder = "Encryption key",
+    MultilineTextField(
+        value = "",
         onValueChange = {},
+        placeholder = "Your encryption key here",
+        textStyle = TextStyle(
+            color = Colors.Gray0,
+            fontSize = 15.sp,
+            fontWeight = FontWeight.Medium,
+            fontFamily = outfitFontFamily
+        ),
+        expandBasedOnLineCount = false,
+        height = 60.dp,
+        decorationBoxModifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp),
         modifier = Modifier
-            .clip(RoundedCornerShape(size = 30.dp)),
-        decorationBoxModifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 14.dp, vertical = 10.dp)
-    )
-
-    Spacer(modifier = Modifier.height(10.dp))
-
-    SinglelineTextField(
-        placeholder = "Password",
-        onValueChange = {},
-        modifier = Modifier
-            .clip(RoundedCornerShape(size = 30.dp)),
-        decorationBoxModifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 14.dp, vertical = 10.dp)
+            .clip(RoundedCornerShape(size = 12.dp))
+            .background(Colors.White),
     )
 
     Spacer(modifier = Modifier.height(20.dp))
-
 
     Button(
         modifier = Modifier
