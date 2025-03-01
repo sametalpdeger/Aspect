@@ -1,4 +1,4 @@
-package com.example.aspectchat.core.domain.model
+package com.example.aspectchat.core.data.model
 
 @JvmInline
 value class Email private constructor(val value: String) {

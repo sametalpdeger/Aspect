@@ -51,6 +51,7 @@ dependencies {
 
     implementation(libs.kotlinx.serialization.json)
 
+    implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

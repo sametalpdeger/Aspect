@@ -14,8 +14,10 @@ ksp = "2.1.10-1.0.29"
 androidxHiltNavigationCompose = "1.2.0"
 androidx-navigation = "2.8.7"
 kotlinx-serialization-json = "1.8.0"
+datastorePreferences = "1.1.1"
 
 [libraries]
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 
 dagger-hiltandroidplugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }

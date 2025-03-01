@@ -32,6 +32,7 @@ import kotlin.math.roundToInt
 
 @Composable
 fun NavigationContent() {
+    println("Screen: NavigationContent: called")
     val navController = rememberNavController()
     var drawerState by rememberSaveable { mutableStateOf(IsDrawerOpenState.Closed) }
     var isDrawerContentUnder by rememberSaveable { mutableStateOf(true) }

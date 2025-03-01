@@ -97,8 +97,9 @@ fun MultilineTextField(
                 if (value.isEmpty()) {
                     Text(
                         text = placeholder,
-                        color = textStyle.color.copy(alpha = 0.5f),
-                        fontSize = textStyle.fontSize
+                        style = textStyle.copy(
+                            color = textStyle.color.copy(alpha = 0.6f),
+                        )
                     )
                 }
 

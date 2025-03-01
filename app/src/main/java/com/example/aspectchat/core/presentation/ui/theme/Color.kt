@@ -3,6 +3,7 @@ package com.example.aspectchat.core.presentation.ui.theme
 import androidx.compose.ui.graphics.Color
 
 data object Colors {
+    val AspectBlue = Color(0xff4330f3)
     val AspectBlue1100 = Color(0xff3e56f2)
     val AspectBlue1000 = Color(0xff4358ea)
     val AspectBlue900 = Color(0xff475cef)
@@ -43,7 +44,7 @@ data object Colors {
     val Gray200 = Color(0xFFC7C8C9)
     val Gray150 = Color(0xFFD9DADB)
     val Gray100 = Color(0xFFEEEEEF)
-    val Gray50 = Color( 0xFFF8F8F8)
+    val Gray50 = Color(0xFFF8F8F8)
     val Gray0 = Color(0xFF000000)
 
     val White = Color(0xFFFFFFFF)    // Pure white (base)
