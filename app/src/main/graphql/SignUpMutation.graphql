@@ -1,0 +1,6 @@
+mutation SignUpMutation {
+    signUp {
+        secretID
+        userID
+    }
+}

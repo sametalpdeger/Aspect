@@ -3,8 +3,6 @@ package com.example.aspectchat.core.presentation.composes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -19,7 +17,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aspectchat.core.presentation.ui.theme.Colors
 import com.example.aspectchat.core.presentation.ui.theme.outfitFontFamily
@@ -28,7 +25,7 @@ import com.example.aspectchat.core.presentation.ui.theme.outfitFontFamily
 fun SinglelineTextField(
     modifier: Modifier = Modifier,
     value: String = "",
-    onValueChange: (TextFieldValue) -> Unit,
+    onValueChange: (String) -> Unit,
     enabled: Boolean = true,
     readOnly: Boolean = false,
     placeholder: String = "",
@@ -47,10 +44,11 @@ fun SinglelineTextField(
     decorationBoxModifier: Modifier = Modifier,
 ) {
     BasicTextField(
-
         singleLine = true,
         value = TextFieldValue(value),
-        onValueChange = onValueChange,
+        onValueChange = {
+            onValueChange(it.text)
+        },
         modifier = modifier
             .background(Colors.White),
         enabled = enabled,

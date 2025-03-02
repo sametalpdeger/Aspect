@@ -1,12 +1,13 @@
 package com.example.aspectchat
 
-import org.junit.Assert.assertEquals
+import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Test
 
 
+@HiltAndroidTest
 class FastifyServerTest {
     @Test
-    fun addition_isCorrect() {
-
+    fun signUp_rightResponse() {
+  
     }
 }

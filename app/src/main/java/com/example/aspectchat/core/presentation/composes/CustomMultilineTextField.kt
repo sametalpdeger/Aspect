@@ -64,6 +64,7 @@ fun MultilineTextField(
      * Modifier to be applied to the decoration box.
      */
     decorationBoxModifier: Modifier = Modifier,
+    enabled: Boolean = true,
 ) {
     var heightMultiplier by remember { mutableStateOf(0.dp) }
     var currentLineCount by remember { mutableIntStateOf(1) }
@@ -106,7 +107,7 @@ fun MultilineTextField(
                 innerTextField()
             }
         },
-
+        enabled = enabled,
         modifier = modifier
             .height(height + heightMultiplier)
             .then(modifiersBasedOnLineCount(currentLineCount))

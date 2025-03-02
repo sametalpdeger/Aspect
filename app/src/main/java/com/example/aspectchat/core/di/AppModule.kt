@@ -1,25 +1,37 @@
 package com.example.aspectchat.core.di
 
-import com.example.aspectchat.core.data.network.MainServerApiService
-import com.example.aspectchat.core.helpers.Env
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.apollographql.apollo.ApolloClient
+import com.apollographql.apollo.network.okHttpClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
-import retrofit2.Retrofit
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-    @Provides
     @Singleton
-    fun retrofitFastifyServer(): MainServerApiService = Retrofit.Builder()
-        .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
-        .baseUrl(Env.mainServerUrl)
-        .build()
-        .create(MainServerApiService::class.java)
+    @Provides
+    fun provideMainServerApolloClient(okHttpClient: OkHttpClient): ApolloClient {
+        return ApolloClient.Builder()
+            .serverUrl("http://192.168.1.113:3200/graphql")
+            .okHttpClient(okHttpClient)
+            .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideOkHttpClient(): OkHttpClient {
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+        return OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .build()
+    }
 }

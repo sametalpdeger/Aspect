@@ -1,0 +1,1 @@
+cd .. && ./gradlew :app:downloadApolloSchema --endpoint=http://192.168.1.113:3200/graphql --schema=app/src/main/graphql/schema.graphqls

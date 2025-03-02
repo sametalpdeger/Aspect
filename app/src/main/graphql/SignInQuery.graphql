@@ -1,0 +1,8 @@
+query SignInQuery ($secretID: String!, $userID: String!) {
+    signIn (
+        secretID: $secretID,
+        userID: $userID
+    ) {
+        success
+    }
+}

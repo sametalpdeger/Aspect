@@ -6,9 +6,22 @@ plugins {
 
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.apollo)
 }
 
+
+
 android {
+    apollo {
+        service("service") {
+            packageName.set("com.example")
+            introspection {
+                endpointUrl.set("http://192.168.1.113:3200/graphql")
+                schemaFile.set(file("src/main/graphql/schema.graphqls"))
+            }
+        }
+    }
+
     namespace = "com.example.aspectchat"
     compileSdk = 35
 
@@ -19,7 +32,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.example.aspectchat.CustomTestRunner"
     }
 
     buildTypes {
@@ -39,46 +52,55 @@ android {
         jvmTarget = "11"
     }
     buildFeatures {
-        compose = true
+        buildFeatures {
+            compose = true
+        }
+    }
+
+    dependencies {
+        implementation(libs.androidx.junit.ktx)
+        ksp(libs.hilt.compiler)
+
+        implementation(libs.apollo.runtime)
+
+        implementation(libs.okhttp3)
+        implementation(libs.retrofit2)
+        implementation(libs.retrofit2.kotlinx.serialization.converter)
+        implementation(libs.retrofit.gson)
+        implementation(libs.okhttp.logging.interceptor)
+
+
+        implementation(libs.androidx.hilt.navigation.compose)
+        implementation(libs.hilt.android)
+
+        implementation(libs.kotlinx.serialization.json)
+
+        implementation(libs.androidx.datastore.preferences)
+        implementation(libs.androidx.navigation.compose)
+        implementation(libs.androidx.core.ktx)
+        implementation(libs.androidx.lifecycle.runtime.ktx)
+        implementation(libs.androidx.activity.compose)
+        implementation(platform(libs.androidx.compose.bom))
+        implementation(libs.androidx.ui)
+        implementation(libs.androidx.ui.graphics)
+        implementation(libs.androidx.ui.tooling.preview)
+        implementation(libs.androidx.material3)
+
+        testImplementation(libs.junit)
+        androidTestImplementation(libs.androidx.junit)
+        androidTestImplementation(libs.androidx.espresso.core)
+        androidTestImplementation(platform(libs.androidx.compose.bom))
+        androidTestImplementation(libs.androidx.ui.test.junit4)
+        testImplementation(libs.hilt.android.testing)
+        testImplementation(libs.hilt.ext.compiler)
+        implementation(libs.dagger.hiltandroidplugin)
+
+        debugImplementation(libs.androidx.ui.tooling)
+        debugImplementation(libs.androidx.ui.test.manifest)
     }
 }
-
 dependencies {
-    implementation(libs.androidx.junit.ktx)
-    ksp(libs.hilt.compiler)
-
-    implementation(libs.okhttp3)
-    implementation(libs.retrofit2)
-    implementation(libs.retrofit2.kotlinx.serialization.converter)
-    implementation(libs.retrofit.gson)
-    implementation(libs.okhttp.logging.interceptor)
-
-
-    implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.hilt.android)
-
-    implementation(libs.kotlinx.serialization.json)
-
-    implementation(libs.androidx.datastore.preferences)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    testImplementation(libs.hilt.android.testing)
-    testImplementation(libs.hilt.ext.compiler)
-    implementation(libs.dagger.hiltandroidplugin)
-
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.androidx.runner)
+    implementation(libs.hilt.android.testing)
+    androidTestImplementation(libs.hilt.android.testing)
 }
