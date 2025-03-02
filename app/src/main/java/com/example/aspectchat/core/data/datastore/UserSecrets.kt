@@ -7,7 +7,7 @@ import java.io.OutputStream
 
 @Serializable
 data class UserKeys(
-    val aesKeyText: String? = null
+    val encryptionKey: String? = null
 )
 
 object UserKeysSerializer : Serializer<UserKeys> {

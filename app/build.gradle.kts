@@ -44,7 +44,15 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.junit.ktx)
     ksp(libs.hilt.compiler)
+
+    implementation(libs.okhttp3)
+    implementation(libs.retrofit2)
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
+    implementation(libs.retrofit.gson)
+    implementation(libs.okhttp.logging.interceptor)
+
 
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.hilt.android)
@@ -61,11 +69,16 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+    testImplementation(libs.hilt.android.testing)
+    testImplementation(libs.hilt.ext.compiler)
+    implementation(libs.dagger.hiltandroidplugin)
+
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }

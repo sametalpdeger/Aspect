@@ -10,6 +10,7 @@ import com.example.aspectchat.core.data.datastore.UserAccountSerializer
 import com.example.aspectchat.core.data.datastore.UserKeysSerializer
 import com.example.aspectchat.core.data.datastore.UserPreferencesSerializer
 import com.example.aspectchat.core.presentation.ui.theme.AspectChatTheme
+import dagger.hilt.android.AndroidEntryPoint
 
 val Context.userPreferencesDataStore by dataStore(
     fileName = "user-preferences",
@@ -26,6 +27,7 @@ val Context.userAccountDataStore by dataStore(
     serializer = UserAccountSerializer
 )
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

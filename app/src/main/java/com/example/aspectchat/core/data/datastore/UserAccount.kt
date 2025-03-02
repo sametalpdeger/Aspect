@@ -7,7 +7,9 @@ import java.io.OutputStream
 
 @Serializable
 data class UserAccount(
-    val token: String? = null
+    val userId: String? = null,
+    val nickname: String? = null,
+    val password: String? = null,
 )
 
 object UserAccountSerializer : Serializer<UserAccount> {

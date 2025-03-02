@@ -7,7 +7,7 @@ import java.io.OutputStream
 
 @Serializable
 data class UserPreferences(
-    val token: String? = null
+    val darkMode: Boolean = false,
 )
 
 object UserPreferencesSerializer : Serializer<UserPreferences> {
