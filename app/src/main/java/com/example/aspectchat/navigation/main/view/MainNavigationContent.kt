@@ -23,15 +23,15 @@ import androidx.compose.ui.zIndex
 import androidx.navigation.compose.rememberNavController
 import com.example.aspectchat.core.presentation.ui.theme.colorsA
 import com.example.aspectchat.core.presentation.ui.theme.isDarkTheme
-import com.example.aspectchat.navigation.bottomNavbar.BottomNavbarView
-import com.example.aspectchat.navigation.domain.model.IsDrawerOpenState
-import com.example.aspectchat.navigation.domain.model.isOpened
-import com.example.aspectchat.navigation.navigationDrawer.presentation.view.Drawer
-import com.example.aspectchat.navigation.presentation.view.MainContent
+import com.example.aspectchat.navigation.main.bottomNavbar.BottomNavbarView
+import com.example.aspectchat.navigation.main.model.IsDrawerOpenState
+import com.example.aspectchat.navigation.main.model.isOpened
+import com.example.aspectchat.navigation.main.navigationDrawer.presentation.view.Drawer
+import com.example.aspectchat.navigation.main.view.MainContent
 import kotlin.math.roundToInt
 
 @Composable
-fun NavigationContent() {
+fun MainNavigationContent() {
     println("Screen: NavigationContent: called")
     val navController = rememberNavController()
     var drawerState by rememberSaveable { mutableStateOf(IsDrawerOpenState.Closed) }

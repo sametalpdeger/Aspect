@@ -1,4 +1,4 @@
-package com.example.aspectchat.navigation.domain.model
+package com.example.aspectchat.navigation.main.model
 
 enum class IsDrawerOpenState {
     Opened,

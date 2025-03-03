@@ -1,4 +1,4 @@
-package com.example.aspectchat.navigation.presentation.view
+package com.example.aspectchat.navigation.main.view
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavHostController
 import com.example.aspectchat.core.util.coloredShadow
-import com.example.aspectchat.navigation.domain.model.IsDrawerOpenState
+import com.example.aspectchat.navigation.main.model.IsDrawerOpenState
 
 
 @Composable

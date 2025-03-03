@@ -1,4 +1,4 @@
-package com.example.aspectchat.navigation.presentation.view
+package com.example.aspectchat.navigation.main.view
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember

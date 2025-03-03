@@ -1,4 +1,4 @@
-package com.example.aspectchat.navigation.navigationDrawer.presentation.view
+package com.example.aspectchat.navigation.main.navigationDrawer.presentation.view
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,7 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aspectchat.core.presentation.ui.theme.colorsA
-import com.example.aspectchat.navigation.domain.model.UserData
+import com.example.aspectchat.navigation.main.model.UserData
 
 @Composable
 fun NavigationItemView(

@@ -1,4 +1,4 @@
-package com.example.aspectchat.navigation.navigationDrawer.presentation.view
+package com.example.aspectchat.navigation.main.navigationDrawer.presentation.view
 
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
@@ -12,7 +12,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.aspectchat.R
-import com.example.aspectchat.navigation.domain.model.UserData
+import com.example.aspectchat.navigation.main.model.UserData
 
 @Composable
 fun ColumnScope.NavigationItemsView() {

@@ -1,5 +1,6 @@
 package com.example.aspectchat.core.util
 
+import com.example.aspectchat.core.data._nonPersistSecretKey
 import java.security.MessageDigest
 import javax.crypto.Cipher
 import javax.crypto.SecretKey
@@ -40,7 +41,7 @@ object Crypto {
     private val cipher = Cipher.getInstance(TRANSFORMATION)
     private val ivParameterSpec = IvParameterSpec(ByteArray(IV_LENGTH))
     private val gcmParameterSpec = GCMParameterSpec(TAG_LENGTH, ivParameterSpec.iv)
-    private var secretKey: SecretKey? = null
+
 
     /**
      * Generates a secret key from a given text.
@@ -78,7 +79,7 @@ object Crypto {
     fun encrypt(
         data: ByteArray,
     ): ByteArray? {
-        val secretKey = secretKey ?: return null
+        val secretKey = _nonPersistSecretKey.value ?: return null
 
         cipher.init(Cipher.ENCRYPT_MODE, secretKey, gcmParameterSpec)
         return cipher.doFinal(data)
@@ -93,7 +94,7 @@ object Crypto {
     fun decrypt(
         data: ByteArray,
     ): ByteArray? {
-        val secretKey = secretKey ?: return null
+        val secretKey = _nonPersistSecretKey.value ?: return null
 
         cipher.init(Cipher.DECRYPT_MODE, secretKey, gcmParameterSpec)
         return cipher.doFinal(data)
@@ -104,6 +105,11 @@ object Crypto {
      * @param text The text to generate the key from.
      */
     fun setSecretKey(text: String) {
-        secretKey = generateAESKeyFromText(text)
+        _nonPersistSecretKey.value = generateAESKeyFromText(text)
+    }
+
+
+    fun verifyArgon2(hashedValue: ByteArray, value: ByteArray): Boolean {
+        return true
     }
 }

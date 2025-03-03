@@ -1,4 +1,4 @@
-package com.example.aspectchat.navigation.bottomNavbar
+package com.example.aspectchat.navigation.main.bottomNavbar
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -16,9 +16,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.aspectchat.R
 import com.example.aspectchat.core.presentation.ui.theme.colorsA
-import com.example.aspectchat.navigation.presentation.view.Friends
-import com.example.aspectchat.navigation.presentation.view.Home
-import com.example.aspectchat.navigation.presentation.view.Settings
+import com.example.aspectchat.navigation.main.view.Friends
+import com.example.aspectchat.navigation.main.view.Home
+import com.example.aspectchat.navigation.main.view.Settings
 
 @Composable
 fun BottomNavbarView(

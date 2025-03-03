@@ -1,4 +1,4 @@
-package com.example.aspectchat.navigation.navigationDrawer.domain
+package com.example.aspectchat.navigation.main.navigationDrawer.domain
 
 data class UserData(
     val ID: String,

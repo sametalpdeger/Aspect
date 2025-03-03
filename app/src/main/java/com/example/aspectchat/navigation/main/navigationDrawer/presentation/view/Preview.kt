@@ -1,4 +1,4 @@
-package com.example.aspectchat.navigation.navigationDrawer.presentation.view
+package com.example.aspectchat.navigation.main.navigationDrawer.presentation.view
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier

@@ -1,6 +1,9 @@
 package com.example.aspectchat.screens.signup.presentation.viewModels
 
+import androidx.datastore.core.DataStore
 import androidx.lifecycle.ViewModel
+import com.example.aspectchat.core.data.datastore.UserAccount
+import com.example.aspectchat.core.data.datastore.UserKeys
 import com.example.aspectchat.core.data.repositories.MainServerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -9,14 +12,17 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
 @HiltViewModel
 class FormSectionViewModel @Inject constructor(
-    private val mainServerRepository: MainServerRepository
+    private val mainServerRepository: MainServerRepository,
+    private val userAccountDataStore: DataStore<UserAccount>,
+    private val userKeysDataStore: DataStore<UserKeys>,
 ) : ViewModel() {
-     val _isLoading = MutableStateFlow(false)
-     val _isError = MutableStateFlow(false)
-     val _nickname = MutableStateFlow("")
-     val _encryptionKey = MutableStateFlow("")
+    val _isLoading = MutableStateFlow(false)
+    val _isError = MutableStateFlow(false)
+    val _nickname = MutableStateFlow("")
+    val _encryptionKey = MutableStateFlow("")
 
     fun setNickname(nickname: String) {
         _nickname.value = nickname
@@ -28,17 +34,36 @@ class FormSectionViewModel @Inject constructor(
 
     fun onContinue() {
         CoroutineScope(Dispatchers.IO).launch {
-            _isLoading.value = true
+            if (
+                _nickname.value.trim().isEmpty() ||
+                _encryptionKey.value.trim().isEmpty()
+            ) return@launch
 
+            _isLoading.value = true
             val response = mainServerRepository.getSignUpResponse()
+
             if (response !== null) {
                 _isLoading.value = false
-                _isError.value = true
+                _isError.value = false
+
+                userAccountDataStore.updateData {
+                    UserAccount(
+                        userId = response.userID,
+                        nickname = _nickname.value,
+                        password = response.secretID
+                    )
+                }
+
+                userKeysDataStore.updateData {
+                    UserKeys(
+                        encryptionKey = _encryptionKey.value,
+                    )
+                }
 
                 println("RESPONSE: $response")
             } else {
                 _isLoading.value = false
-                _isError.value = false
+                _isError.value = true
 
                 println("RESPONSE: $response")
             }

@@ -1,4 +1,4 @@
-package com.example.aspectchat.navigation.navigationDrawer.presentation.view
+package com.example.aspectchat.navigation.main.navigationDrawer.presentation.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
