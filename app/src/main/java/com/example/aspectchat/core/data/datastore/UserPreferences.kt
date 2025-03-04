@@ -14,6 +14,9 @@ object UserPreferencesSerializer : Serializer<UserPreferences> {
     override val defaultValue: UserPreferences
         get() = UserPreferences()
 
-    override suspend fun readFrom(input: InputStream): UserPreferences = readFromFunc(input)
-    override suspend fun writeTo(t: UserPreferences, output: OutputStream) = writeToFunc(t, output)
+    override suspend fun readFrom(input: InputStream): UserPreferences =
+        readFromFunc(input, "UserPreferences")
+
+    override suspend fun writeTo(t: UserPreferences, output: OutputStream) =
+        writeToFunc(t, output, "UserPreferences")
 }

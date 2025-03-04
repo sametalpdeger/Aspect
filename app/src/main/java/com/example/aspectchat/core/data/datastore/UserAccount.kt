@@ -16,6 +16,6 @@ object UserAccountSerializer : Serializer<UserAccount> {
     override val defaultValue: UserAccount
         get() = UserAccount()
 
-    override suspend fun readFrom(input: InputStream): UserAccount = readFromFunc(input)
-    override suspend fun writeTo(t: UserAccount, output: OutputStream) = writeToFunc(t, output)
+    override suspend fun readFrom(input: InputStream): UserAccount = readFromFunc(input, "UserAccount")
+    override suspend fun writeTo(t: UserAccount, output: OutputStream) = writeToFunc(t, output, "UserAccount")
 }

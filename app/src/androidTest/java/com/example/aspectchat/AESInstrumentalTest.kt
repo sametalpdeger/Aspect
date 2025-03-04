@@ -1,6 +1,6 @@
 package com.example.aspectchat
 
-import com.example.aspectchat.core.data._nonPersistSecretKey
+import com.example.aspectchat.core.data._nonPersistEncryptionKey
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Assert.assertEquals
@@ -82,7 +82,7 @@ object Encryption {
         data: ByteArray,
         secretKey: SecretKey?
     ): ByteArray? {
-        val secretKey = secretKey ?: _nonPersistSecretKey.value ?: return null
+        val secretKey = secretKey ?: _nonPersistEncryptionKey.value ?: return null
 
         cipher.init(Cipher.ENCRYPT_MODE, secretKey, gcmParameterSpec)
         return cipher.doFinal(data)
@@ -98,7 +98,7 @@ object Encryption {
         data: ByteArray,
         secretKey: SecretKey?
     ): ByteArray? {
-        val secretKey = secretKey ?: _nonPersistSecretKey.value ?: return null
+        val secretKey = secretKey ?: _nonPersistEncryptionKey.value ?: return null
 
         cipher.init(Cipher.DECRYPT_MODE, secretKey, gcmParameterSpec)
         return cipher.doFinal(data)

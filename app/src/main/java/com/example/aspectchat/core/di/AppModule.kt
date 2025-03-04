@@ -7,8 +7,6 @@ import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.network.okHttpClient
 import com.example.aspectchat.core.data.datastore.UserAccount
 import com.example.aspectchat.core.data.datastore.UserAccountSerializer
-import com.example.aspectchat.core.data.datastore.UserKeys
-import com.example.aspectchat.core.data.datastore.UserKeysSerializer
 import com.example.aspectchat.core.data.datastore.UserPreferences
 import com.example.aspectchat.core.data.datastore.UserPreferencesSerializer
 import dagger.Module
@@ -24,11 +22,6 @@ import javax.inject.Singleton
 val Context.userPreferencesDataStore by dataStore(
     fileName = "user-preferences",
     serializer = UserPreferencesSerializer
-)
-
-val Context.userKeysDataStore by dataStore(
-    fileName = "user-keys",
-    serializer = UserKeysSerializer
 )
 
 val Context.userAccountDataStore by dataStore(
@@ -69,14 +62,6 @@ object AppModule {
         return applicationContext.userPreferencesDataStore
     }
 
-
-    @Provides
-    @Singleton
-    fun provideUserKeysDataStore(
-        @ApplicationContext applicationContext: Context
-    ): DataStore<UserKeys> {
-        return applicationContext.userKeysDataStore
-    }
 
     @Provides
     @Singleton

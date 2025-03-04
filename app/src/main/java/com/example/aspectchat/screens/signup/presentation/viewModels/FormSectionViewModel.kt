@@ -3,7 +3,6 @@ package com.example.aspectchat.screens.signup.presentation.viewModels
 import androidx.datastore.core.DataStore
 import androidx.lifecycle.ViewModel
 import com.example.aspectchat.core.data.datastore.UserAccount
-import com.example.aspectchat.core.data.datastore.UserKeys
 import com.example.aspectchat.core.data.repositories.MainServerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -17,7 +16,6 @@ import javax.inject.Inject
 class FormSectionViewModel @Inject constructor(
     private val mainServerRepository: MainServerRepository,
     private val userAccountDataStore: DataStore<UserAccount>,
-    private val userKeysDataStore: DataStore<UserKeys>,
 ) : ViewModel() {
     val _isLoading = MutableStateFlow(false)
     val _isError = MutableStateFlow(false)
@@ -51,12 +49,6 @@ class FormSectionViewModel @Inject constructor(
                         userId = response.userID,
                         nickname = _nickname.value,
                         password = response.secretID
-                    )
-                }
-
-                userKeysDataStore.updateData {
-                    UserKeys(
-                        encryptionKey = _encryptionKey.value,
                     )
                 }
 
