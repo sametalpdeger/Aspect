@@ -1,7 +1,9 @@
 package com.example.aspectchat
 
 import com.example.aspectchat.core.util.crypto.BLAKE3_256
+import com.example.aspectchat.core.util.crypto.GOST_256
 import com.example.aspectchat.core.util.crypto.Keccak_256
+import com.example.aspectchat.core.util.crypto.RIPEMD_256
 import com.example.aspectchat.core.util.crypto.SHA3_256
 import com.example.aspectchat.core.util.crypto.SHAKE_256
 import com.example.aspectchat.core.util.crypto.SKEIN_256
@@ -99,7 +101,35 @@ class HashesTest {
         println("Tiger192 hash: $hex1" )
         println("Tiger192 hash2: $hex2")
         println("hash1 size ${hash.size}")
-        println("has2 size ${hash2.size}")
+        println("hash2 size ${hash2.size}")
+
+        assertEquals(hex1,hex2)
+    }
+    @Test
+    fun hash_ripemd_256() {
+        val hash = RIPEMD_256.hash("Hello Kotlin".toByteArray(Charsets.UTF_8))
+        val hash2 = RIPEMD_256.hash("Hello Kotlin".toByteArray(Charsets.UTF_8))
+        val hex1 = hash.toHexString()
+        val hex2 = hash2.toHexString()
+
+        println("RIPEMD256 hash: $hex1" )
+        println("RIPEMD256 hash2: $hex2")
+        println("hash1 size ${hash.size}")
+        println("hash2 size ${hash2.size}")
+
+        assertEquals(hex1,hex2)
+    }
+    @Test
+    fun hash_GOST_256() {
+        val hash = GOST_256.hash("Hello Kotlin".toByteArray(Charsets.UTF_8))
+        val hash2 = GOST_256.hash("Hello Kotlin".toByteArray(Charsets.UTF_8))
+        val hex1 = hash.toHexString()
+        val hex2 = hash2.toHexString()
+
+        println("GOST_256 hash: $hex1" )
+        println("GOST_256 hash2: $hex2")
+        println("hash1 size ${hash.size}")
+        println("hash2 size ${hash2.size}")
 
         assertEquals(hex1,hex2)
     }
