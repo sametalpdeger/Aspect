@@ -13,16 +13,13 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="ExampleInstrumentedTest">
+      <SelectionState runConfigName="givenRawPassword_whenUsedToEncrypt_thenShouldWork()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Argon2InstrumentedTest">
+      <SelectionState runConfigName="HashesTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="givenRawPasswordAndSalt_whenArgon2AlgorithmIsUsed_thenHashIsCorrect()">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="deviceMemoryInfo()">
+      <SelectionState runConfigName="hash_sha3_256()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

@@ -1,6 +1,11 @@
-package com.example.aspectchat.core.util
+package com.example.aspectchat
 
 import com.example.aspectchat.core.data._nonPersistSecretKey
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
+import org.junit.Assert.assertEquals
+import org.junit.Rule
+import org.junit.Test
 import java.security.MessageDigest
 import javax.crypto.Cipher
 import javax.crypto.SecretKey
@@ -8,10 +13,7 @@ import javax.crypto.spec.GCMParameterSpec
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
-/**
- * Crypto class for encryption and decryption in app.
- */
-object Crypto {
+object Encryption {
     /**
      * The transformation used for encryption and decryption.
      *
@@ -78,8 +80,9 @@ object Crypto {
      */
     fun encrypt(
         data: ByteArray,
+        secretKey: SecretKey?
     ): ByteArray? {
-        val secretKey = _nonPersistSecretKey.value ?: return null
+        val secretKey = secretKey ?: _nonPersistSecretKey.value ?: return null
 
         cipher.init(Cipher.ENCRYPT_MODE, secretKey, gcmParameterSpec)
         return cipher.doFinal(data)
@@ -93,23 +96,43 @@ object Crypto {
      */
     fun decrypt(
         data: ByteArray,
+        secretKey: SecretKey?
     ): ByteArray? {
-        val secretKey = _nonPersistSecretKey.value ?: return null
+        val secretKey = secretKey ?: _nonPersistSecretKey.value ?: return null
 
         cipher.init(Cipher.DECRYPT_MODE, secretKey, gcmParameterSpec)
         return cipher.doFinal(data)
     }
+}
 
-    /**
-     * Sets the secret key.
-     * @param text The text to generate the key from.
-     */
-    fun setSecretKey(text: String) {
-        _nonPersistSecretKey.value = generateAESKeyFromText(text)
+/**
+ * Instrumented test, which will execute on an Android device.
+ *
+ * See [testing documentation](http://d.android.com/tools/testing).
+ */
+@HiltAndroidTest
+class AESInstrumentalTest {
+
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
+
+
+    @OptIn(ExperimentalStdlibApi::class)
+    @Test
+    fun givenRawPassword_whenUsedToEncrypt_thenShouldWork() {
+        val password = "password"
+        val secretKey = Encryption.generateAESKeyFromText(password)
+        val secretKey3 = Encryption.generateAESKeyFromText("falanfafwpaıhdpsaı")
+
+
+        val encryptedData = Encryption.encrypt(password.toByteArray(), secretKey)
+
+        println("ENCRYPTED DATA: ${encryptedData?.toHexString()}")
+        val decryptedData = Encryption.decrypt(encryptedData!!, secretKey3)
+
+        println("DECRYPTED DATA: ${decryptedData?.toHexString()}")
+        assertEquals(password, String(decryptedData!!))
     }
 
 
-    fun verifyArgon2(hashedValue: ByteArray, value: ByteArray): Boolean {
-        return true
-    }
 }

@@ -24,8 +24,11 @@ junitKtx = "1.2.1"
 apollo = "4.1.1"
 runner = "1.6.2"
 bouncycastle = "1.77"
+apache-commons-codec = "1.15"
 
 [libraries]
+apache-commons-codec = { module = "commons-codec:commons-codec", version.ref = "apache-commons-codec" }
+
 bouncycastle-bcprov-jdk18on = { module = "org.bouncycastle:bcpkix-jdk18on", version.ref = "bouncycastle" }
 
 apollo-runtime = { module = "com.apollographql.apollo:apollo-runtime", version.ref = "apollo" }

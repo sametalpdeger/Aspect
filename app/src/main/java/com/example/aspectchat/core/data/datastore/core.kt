@@ -1,7 +1,8 @@
 package com.example.aspectchat.core.data.datastore
 
 import android.util.Base64
-import com.example.aspectchat.core.util.Crypto
+import com.example.aspectchat.core.data._nonPersistSecretKey
+import com.example.aspectchat.core.util.crypto.Encryption
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
@@ -15,7 +16,10 @@ suspend inline fun <reified T> readFromFunc(input: InputStream, encryption: Bool
     val decodedBytes = Base64.decode(encryptedBytes, Base64.DEFAULT)
     val decryptedBytes =
         if (encryption)
-            Crypto.decrypt(decodedBytes) ?: throw Exception("DataStore Decryption failed")
+            Encryption.decrypt(
+                decodedBytes,
+                _nonPersistSecretKey.value ?: throw Exception("DataStore Decryption failed")
+            ) ?: throw Exception("DataStore Decryption failed")
         else decodedBytes
 
     val decodedJsonString = decryptedBytes.toString(Charsets.UTF_8)
@@ -27,7 +31,10 @@ suspend inline fun <reified T> writeToFunc(t: T, output: OutputStream, encryptio
     val json = Json.encodeToString(t)
 
     val bytes = json.toByteArray()
-    val encryptedBytes = if (encryption) Crypto.encrypt(bytes)
+    val encryptedBytes = if (encryption) Encryption.encrypt(
+        bytes,
+        _nonPersistSecretKey.value ?: throw Exception("DataStore Encryption failed")
+    )
         ?: throw Exception("DataStore Encryption failed")
     else bytes
 

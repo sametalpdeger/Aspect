@@ -58,6 +58,8 @@ android {
     }
 
     dependencies {
+        implementation(libs.apache.commons.codec)
+
         implementation(libs.bouncycastle.bcprov.jdk18on)
 
         implementation(libs.androidx.junit.ktx)
