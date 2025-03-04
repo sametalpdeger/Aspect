@@ -5,6 +5,7 @@ import com.example.aspectchat.core.util.crypto.Keccak_256
 import com.example.aspectchat.core.util.crypto.SHA3_256
 import com.example.aspectchat.core.util.crypto.SHAKE_256
 import com.example.aspectchat.core.util.crypto.SKEIN_256
+import com.example.aspectchat.core.util.crypto.TIGER_192
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -90,5 +91,19 @@ class HashesTest {
         println("hash2 size: ${hash2.size}")
 
         assertEquals(hex1, hex2)
+    }
+    @Test
+    fun hash_tiger_192() {
+        val hash = TIGER_192.hash("Hello Kotlin".toByteArray(Charsets.UTF_8))
+        val hash2 = TIGER_192.hash("Hello Kotlin".toByteArray(Charsets.UTF_8))
+        val hex1 = hash.toHexString()
+        val hex2 = hash2.toHexString()
+
+        println("Tiger192 hash: $hex1" )
+        println("Tiger192 hash2: $hex2")
+        println("hash1 size ${hash.size}")
+        println("has2 size ${hash2.size}")
+
+        assertEquals(hex1,hex2)
     }
 }

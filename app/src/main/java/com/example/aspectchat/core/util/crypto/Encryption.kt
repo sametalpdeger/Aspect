@@ -47,7 +47,7 @@ object Encryption {
         // RIPEMD_256,
         // WHIRLPOOL_256,
         SKEIN_256,
-        // TIGER_256
+        TIGER_192
     }
 
 
@@ -61,6 +61,7 @@ object Encryption {
             HashAlgorithmToDeriveKey.BLAKE3_256 -> BLAKE3_256.hash(text.toByteArray(StandardCharsets.UTF_8))
             HashAlgorithmToDeriveKey.SHAKE_256 -> SHAKE_256.hash(text.toByteArray(StandardCharsets.UTF_8))
             HashAlgorithmToDeriveKey.SKEIN_256 -> SKEIN_256.hash(text.toByteArray(StandardCharsets.UTF_8))
+            HashAlgorithmToDeriveKey.TIGER_192 -> TIGER_192.hash(text.toByteArray(StandardCharsets.UTF_8))
         }
 
         return SecretKeySpec(hashedBytes, "AES")
