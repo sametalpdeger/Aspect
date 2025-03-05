@@ -2,10 +2,11 @@ package com.example.aspectchat.core.util.crypto
 
 import org.bouncycastle.jcajce.provider.digest.Tiger;
 
-object TIGER_192 {
+object TIGER_128 {
     fun hash(value: ByteArray): ByteArray {
         val messageDigest = Tiger.Digest()
         messageDigest.update(value)
-        return messageDigest.digest()
+        val fullHash = messageDigest.digest();
+        return fullHash.copyOf(16)
     }
 }
