@@ -1,2 +1,3 @@
-Aspect is a open source, P2P, decentralized, highly customizable and secure chat application that works on Android. Aspect is highly anonymous - only your nickname is known to users and the system. There is no sign-up system.
+![Icon](https://drive.google.com/file/d/1YevuAeHj9GgEMhH4LFzGVBkejHz_QlCi/view?usp=sharing)
 
+Aspect is decentralized P2P chat application built with kotlin and jetpack compose. Still in development.
