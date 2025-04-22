@@ -1,4 +1,4 @@
-package com.example.aspectchat.navigation.auth
+package com.example.aspectchat.navigation.auth.presentation.view
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
@@ -11,14 +11,13 @@ import kotlinx.serialization.Serializable
 
 @Composable
 fun SignInNavHost(
-    isSignedIn: Boolean,
+    isOpen: Boolean?,
     content: @Composable () -> Unit
 ) {
-    if (isSignedIn) {
-        content()
-        return
-    }
-    
+
+    if (isOpen == null || !isOpen) return content()
+
+
     val navController = rememberNavController()
 
     NavHost(
@@ -26,9 +25,7 @@ fun SignInNavHost(
         startDestination = SignUp
     ) {
         composable<SignUp> {
-            SignUpScreen(
-                {}
-            )
+            SignUpScreen()
         }
 
         composable<SignIn> {

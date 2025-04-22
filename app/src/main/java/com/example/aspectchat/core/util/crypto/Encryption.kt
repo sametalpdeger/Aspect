@@ -68,7 +68,7 @@ object Encryption {
     fun encrypt(
         data: ByteArray,
         secretKey: SecretKey
-    ): ByteArray? {
+    ): ByteArray {
         val cipher = Cipher.getInstance(TRANSFORMATION)
         cipher.init(Cipher.ENCRYPT_MODE, secretKey, gcmParameterSpec)
 
@@ -78,7 +78,7 @@ object Encryption {
     fun decrypt(
         data: ByteArray,
         secretKey: SecretKey
-    ): ByteArray? {
+    ): ByteArray {
         val cipher = Cipher.getInstance(TRANSFORMATION)
         cipher.init(Cipher.DECRYPT_MODE, secretKey, gcmParameterSpec)
         return cipher.doFinal(data)

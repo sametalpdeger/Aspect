@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -17,6 +18,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,10 +31,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aspectchat.R
+import com.example.aspectchat.core.presentation.composes.LargeDropdownMenu
 import com.example.aspectchat.core.presentation.composes.MultilineTextField
 import com.example.aspectchat.core.presentation.composes.SinglelineTextField
 import com.example.aspectchat.core.presentation.ui.theme.Colors
 import com.example.aspectchat.core.presentation.ui.theme.outfitFontFamily
+import com.example.aspectchat.core.util.crypto.Encryption
 
 
 @Composable
@@ -51,11 +55,62 @@ fun FormSection(
         placeholder = "Nickname",
         onValueChange = { onChangeNickname(it) },
         enabled = !isLoading,
+        textStyle = TextStyle(
+            color = Colors.Gray0,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Medium,
+            fontFamily = outfitFontFamily
+        ),
         modifier = Modifier
-            .clip(RoundedCornerShape(size = 30.dp)),
+            .clip(RoundedCornerShape(size = 12.dp)),
         decorationBoxModifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 14.dp, vertical = 10.dp)
+    )
+
+    Spacer(modifier = Modifier.height(10.dp))
+
+    LargeDropdownMenu(
+        label = "Hash Algorithm",
+        labelStyle = TextStyle(
+            color = Colors.Gray350,
+            fontSize = 13.sp,
+            fontWeight = FontWeight.Medium,
+            fontFamily = outfitFontFamily
+        ),
+        selectedTextStyle = TextStyle(
+            color = Colors.Gray0,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Medium,
+            fontFamily = outfitFontFamily
+        ),
+        textFieldColors = TextFieldDefaults.colors(
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent,
+            unfocusedContainerColor = Colors.White,
+            focusedContainerColor = Colors.White,
+        ),
+       textFieldContainerModifier = Modifier
+            .fillMaxWidth()
+           .height(IntrinsicSize.Min),
+        textFieldModifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(size = 12.dp))
+            .background(Colors.White),
+        items = Encryption.HashAlgorithmToDeriveKey.entries.map { it },
+        enabled = !isLoading,
+        selectedIndex = 0,
+        onItemSelected = { _, _ -> },
+    )
+    Spacer(modifier = Modifier.height(2.dp))
+
+    Text(
+        text = "Hash algorithm using to derive your encryption key. Reason of there is so many hash algorithms is to increase possibilty of your key.",
+        color = Color(0xd9ffffff),
+        fontSize = 13.sp,
+        fontWeight = FontWeight.Medium,
+        modifier = Modifier.padding(horizontal = 5.dp),
+        fontFamily = outfitFontFamily
     )
 
     Spacer(modifier = Modifier.height(10.dp))
@@ -67,7 +122,7 @@ fun FormSection(
         placeholder = "Your encryption key here",
         textStyle = TextStyle(
             color = Colors.Gray0,
-            fontSize = 15.sp,
+            fontSize = 18.sp,
             fontWeight = FontWeight.Medium,
             fontFamily = outfitFontFamily
         ),

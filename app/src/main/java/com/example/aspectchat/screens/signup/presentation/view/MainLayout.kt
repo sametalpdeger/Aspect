@@ -1,4 +1,4 @@
-package com.example.aspectchat.screens.lock
+package com.example.aspectchat.screens.signup.presentation.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,22 +22,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aspectchat.R
 import com.example.aspectchat.core.presentation.ui.theme.Colors
 import com.example.aspectchat.core.presentation.ui.theme.outfitFontFamily
-import com.example.aspectchat.screens.lock.presentation.view.FormSection
+
 
 @Composable
-fun LockScreen(
-    setSuccessful: () -> Unit,
-    isOpen: Boolean,
-    content: @Composable () -> Unit
+fun MainLayout(
+    content: @Composable () -> Unit,
 ) {
-    if (!isOpen) return content()
-
     val paddingValues = WindowInsets.systemBars.asPaddingValues()
     val scrollState = rememberScrollState()
 
@@ -50,7 +45,6 @@ fun LockScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .verticalScroll(scrollState)
-
                 .padding(20.dp),
         ) {
             Spacer(modifier = Modifier.height(paddingValues.calculateTopPadding()))
@@ -65,21 +59,20 @@ fun LockScreen(
 
 
             Text(
-                text = "Enter your key",
+                text = "Sign up",
                 color = Colors.White,
                 fontSize = 34.sp,
                 fontWeight = FontWeight.SemiBold,
                 fontFamily = outfitFontFamily
             )
 
+            content()
 
-            Spacer(modifier = Modifier.height(30.dp))
-
-            FormSection { setSuccessful() }
 
             Text(
-
-                text = """Note: Aspect encrypts your local data using "AES/GCM/NoPadding" algorithm. Without key we cannot show your encrypted data. To more information about encryption, please visit our website (aspect-p2p.com) or our source code (github.com/aspect-p2p/Aspect-Chat-Android).""",
+                text = """
+                 
+                """.trimIndent(),
                 color = Color(0xcaffffff),
                 fontSize = 12.sp,
                 lineHeight = 17.sp,
@@ -89,20 +82,6 @@ fun LockScreen(
                     .padding(top = 15.dp),
                 fontFamily = outfitFontFamily
             )
-
         }
     }
-
-
 }
-
-@Preview
-@Composable
-fun LockScreenPreview() {
-    LockScreen(
-        isOpen = true,
-        setSuccessful = {},
-        content = {}
-    )
-}
-

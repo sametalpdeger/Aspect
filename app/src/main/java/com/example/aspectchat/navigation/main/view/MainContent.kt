@@ -34,8 +34,6 @@ fun MainContent(
     onDrag: (change: PointerInputChange, dragAmount: Float) -> Unit,
     openDrawer: () -> Unit,
 ) {
-
-
     Box(
         modifier = Modifier
             .clickable { onClick() }
